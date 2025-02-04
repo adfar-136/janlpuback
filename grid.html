@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 700px;
+            height: 550px;
+            background-color: cadetblue;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: 200px 150px 200px;
+
+            
+        }
+        .container > div {
+             margin: 5px;
+        }
+        .item1{
+            
+            grid-column: 1/2;
+            
+            grid-row: 1/apan 3;
+            background-color: green;
+        }
+        .item2{
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            background-color: green;
+
+        }
+        .item5{
+            
+            grid-area: 2/4/4/5;
+            background-color: green;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item1">item 1</div>
+        <div class="item2">Buffer</div>
+        <div class="item3">Cufffer</div>
+        <div class="item4">Dgfyu</div>
+        <div class="item5">Eggdhhs</div>
+        <div class="item6">Fgygduf</div>
+        <div class="item7">Fgygduf</div>
+        <div class="item8">Fgygduf</div>
+    </div>
+    
+</body>
+</html>
