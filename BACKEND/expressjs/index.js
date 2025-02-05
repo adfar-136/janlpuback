@@ -1,27 +1,29 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
+
+// app.set("view engine","ejs")
+// app.get("/",(req,res)=>{
+//     res.render("index",{
+//         name:"Adfar Rasheed",
+//         age:25
+//     })
+// })
+// app.get("/about",(req,res)=>{
+//     const users = ["Adfar","Shivam","Reddy"]
+//     res.render("about",{users})
+// })
+
+app.set("view engine","hbs")
 
 app.get("/",(req,res)=>{
-    // res.write("This is my first express app \n")
-    // res.write("This is my first express app \n")
-    res.send("<h1>Adfar Rasheed</h1>")
-})
-app.get("/about",(req,res)=>{
-    res.send("<h1>I am About page</h1>")
-})
-// app.get("/contact",(req,res)=>{
-//     res.send("<h1>I am a contact page</h1>")
-// })
-app.get("/contact/:id",(req,res)=>{
-    let id = req.params.id;
-    res.send(`<h1>User ID : ${id} </h1>`)
+    res.render("index",{
+        name:"Adfar Rasheed",
+        age:28,
+        data:["HTML","CSS","JS","REact"]
+    })
 })
 app.get("/contact",(req,res)=>{
-    let obj = req.query;
-    res.send(`<h1> My name is ${obj.name} and my phone number is ${obj.ph} and i am from ${obj.country}`)
-})
-app.get("*",(req,res)=>{
-    res.end("<h1>Error Page</h1>")
+    res.render("contact")
 })
 app.listen(4000,()=>{
     console.log("Listening to port 4000")

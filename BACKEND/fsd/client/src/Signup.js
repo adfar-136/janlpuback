@@ -12,6 +12,7 @@ function Signup() {
         body:JSON.stringify({username,password})
        })
        const data = await response.json();
+       console.log(data)
        setMessage(data.message)
     }
   return (

@@ -12,6 +12,7 @@ export default function Signin() {
             body:JSON.stringify({username,password})
            });
            const data = await response.json()
+           console.log(data)
            setMessage(data.message)
 
         }
