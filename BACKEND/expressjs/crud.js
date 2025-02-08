@@ -13,7 +13,7 @@ app.get("/api/students/:id",(req,res)=>{
         id= parseInt(id)
         let student = studentArray.find((item)=>item.id === id);
         if(student === undefined){
-         return  res.status(404).send("STudent Not Found")
+         return  res.status(404).send("Student Not Found")
         }
        return res.status(200).send(student)
     } else {
