@@ -46,7 +46,7 @@ export default function Signup() {
         <button type='submit'>Signup</button>
         <div>
           <p>Already have an account?</p>
-          <button>Login</button>
+          <button onClick={()=>navigate("/login")}>Login</button>
         </div>
         {error && <p>{error}</p>}
       </form>

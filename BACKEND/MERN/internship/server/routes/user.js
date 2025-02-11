@@ -64,4 +64,18 @@ router.get("/applied-oppurtunities",auth,async(req,res)=>{
       return res.status(500).json({message:"Internal server Error"})
    }
 })
+router.get("/verify",auth,(req,res)=>{
+   try {
+      if(!req.user){
+         return res.status(401).json({status:false,message:"Unaothorized"})
+      }
+      return res.status(200).json({status:true,message:"Authentication successfull",user:req.user})
+   } catch (error) {
+      return res.status(500).json({status:false,message:"server error"})
+   }
+})
+router.get("/logout",(req,res)=>{
+   res.clearCookie("token")
+   return res.json({status:true,message:"logged out successfully"})
+})
 module.exports= router
