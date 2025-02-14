@@ -4,8 +4,8 @@ const { productSchema } = require("./product.model");
 const config = require("../config/config");
 const cartSchema =  mongoose.Schema({
     email:{
-    type:String,
-    required:true
+        type:String,
+        required:true
     },
     cartItems : [
         {
