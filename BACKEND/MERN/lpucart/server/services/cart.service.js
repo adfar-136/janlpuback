@@ -91,10 +91,42 @@ const deleteProductInCart = async (user,productId)=>{
  await cart.save()
 
 }
+
+const checkout = async (user)=>{
+    let cart = await Cart.findOne({email:user.email})
+    if(cart == null){
+        throw new Error("User does not have a cart")
+    }
+    
+    if(cart.cartItems.length === 0){
+        throw new Error("Cart is empty")
+    }
+
+    if(user.address == config.default_address){
+        throw new Error("Address not set")
+    }
+
+    let total = 0;
+    for(let i =0;i<cart.cartItems.length;i++){
+        total += cart.cartItems[i].product.cost * cart.cartItems[i].quantity;
+    }
+    if(total > user.walletMoney){
+       throw new Error("User has insufficient money to process")
+    }
+    
+    user.walletMoney -= total;
+    await user.save();
+
+    cart.cartItems = []
+    await cart.save();
+
+}
+
 module.exports = {
     getCartByUser,
     addProductToCart,
     updateProductInCart,
-    deleteProductInCart
+    deleteProductInCart,
+    checkout
 }
 

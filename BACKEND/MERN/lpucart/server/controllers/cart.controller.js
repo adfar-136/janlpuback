@@ -29,9 +29,13 @@ const updateProductInCart = catchAsync(async (req,res)=>{
   )
   return res.status(200).send(cart)
 })
-
+const checkout = catchAsync(async (req,res)=>{
+    await cartService.checkout(req.user)
+    return res.status(204).send("Checout successful")
+})
 module.exports = {
     getCart,
     addProductToCart,
-    updateProductInCart
+    updateProductInCart,
+    checkout
 }
